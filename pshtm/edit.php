@@ -89,11 +89,35 @@ if (isset($_POST['submit'])) {
                     <div class="f">
                         <div class="fld">
                             <label for="">Department</label>
-                            <input type="text" name="emp_department_name" placeholder="Enter Department" value="<?php echo $existing_emp_department; ?>" required>
+                            <select name="emp_department_name">
+                                    <option value="">Select Department</option>
+                            <?php
+                                    $select_query = "SELECT * FROM department";
+                                    $result_query = pg_query($conn, $select_query);
+
+                                    while ($row = pg_fetch_assoc($result_query)) {
+                                        $emp_department_name = $row['department_name'];
+                                        $selected = ($emp_department_name == $existing_emp_department) ? "selected" : "";
+                                        echo "<option value='$emp_department_name' $selected>$emp_department_name</option>";
+                                    }
+                                    ?>
+                                </select>
                         </div>
                         <div class="fld">
                             <label for="">Job Post</label>
-                            <input type="text" name="emp_job_post_name" placeholder="Enter Job Post" value="<?php echo $existing_emp_job_post; ?>" required>
+                            <select name="emp_job_post_name">
+                                <option value="">Select Job Post</option>
+                            <?php
+                                     $select_query = "SELECT * FROM job_post";
+                                     $result_query = pg_query($conn, $select_query);
+                                     
+                                     while($row = pg_fetch_assoc($result_query)) {
+                                        $emp_job_post_name = $row['job_post_name'];
+                                        $selected = ($emp_job_post_name == $existing_emp_job_post) ? "selected" : "";
+                                        echo "<option value= '$emp_job_post_name' $selected>$emp_job_post_name</option>";
+                                     }
+                            ?>    
+                            </select>
                         </div>
                     </div>
                     <div class="f">
