@@ -1,0 +1,15 @@
+-- Table: public.role
+
+-- DROP TABLE IF EXISTS public.role;
+
+CREATE TABLE IF NOT EXISTS public.role
+(
+    role_id integer NOT NULL DEFAULT nextval('role_role_id_seq'::regclass),
+    role_name character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT role_pkey PRIMARY KEY (role_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.role
+    OWNER to postgres;
