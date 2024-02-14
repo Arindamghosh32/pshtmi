@@ -34,14 +34,20 @@ include('connect.php');
 
             <?php
 
-            $select_query = "SELECT * FROM `emp_job_post`";
+            $select_query = "SELECT
+                             jp.job_post_name,
+                             d.department_name
+                             FROM job_post jp
+                                JOIN training_relations tr ON jp.job_post_id = tr.job_post_id
+                                  JOIN department d ON tr.department_id = d.department_id
+                                    ";
             $result_query = pg_query($conn, $select_query);
 
 
             while ($row = pg_fetch_assoc($result_query)) {
 
-                $emp_dept = $row['emp_dept'];
-                $emp_job_post = $row['emp_job_post'];
+                $emp_dept = $row['department_name'];
+                $emp_job_post = $row['job_post_name'];
 
                 echo "
                 <tbody>
