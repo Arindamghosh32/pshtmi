@@ -61,7 +61,7 @@ include('connect.php');
                             </a>
                         </td>
                         <td>
-                            <a href=''>
+                        <a href='delete_manage_job.php?job_post_id=$job_post_id'>
                                 <p class='l-r'>Delete</p>
                             </a>
                         </td>
