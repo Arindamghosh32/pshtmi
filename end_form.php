@@ -7,12 +7,12 @@ if (isset($_POST['submit'])) {
     $training_program_id = $_POST['training_program_id'];
     $attendance = $_POST['attendance'];
 
-    // Validate input
+    
     if (empty($emp_id) || empty($training_program_id) || empty($attendance)) {
         echo "<script>alert('Please enter all fields');</script>";
         exit();
     } else {
-        // Insert into emp_training_history table
+        
         $insert_emp_training_history = "INSERT INTO emp_training_hostory (emp_id, training_program_id,attendance) VALUES ('$emp_id', '$training_program_id','$attendance')";
         $result_emp_training_history = pg_query($conn, $insert_emp_training_history);
 
@@ -48,7 +48,7 @@ if (isset($_POST['submit'])) {
     <?php require_once("navbar.html") ?>
     <?php require_once("sidebartr.html") ?>
     <?php
-// Generate a unique identifier using timestamp
+
 $unique_identifier = time();
 ?>
 
